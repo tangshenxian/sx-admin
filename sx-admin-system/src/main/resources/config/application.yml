@@ -1,0 +1,20 @@
+server:
+  port: 8000
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: sx-admin
+  jackson:
+    time-zone: GMT+8
+  data:
+    redis:
+      repositories:
+        enabled: false
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.shenxian.entity

@@ -1,0 +1,7 @@
+### IDEA ###
+.idea/*
+*.iml
+*/target/*
+**/test/*
+*/*.iml
+/.gradle/
