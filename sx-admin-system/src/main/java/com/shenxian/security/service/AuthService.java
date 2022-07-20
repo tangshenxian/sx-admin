@@ -1,6 +1,7 @@
 package com.shenxian.security.service;
 
 import cn.hutool.core.util.IdUtil;
+import com.shenxian.config.RsaProperties;
 import com.shenxian.exception.BadRequestException;
 import com.shenxian.security.config.bean.CaptchaProperties;
 import com.shenxian.security.config.bean.CaptchaTypeEnum;
@@ -9,6 +10,8 @@ import com.shenxian.security.security.TokenProvider;
 import com.shenxian.security.service.dto.AuthUserDto;
 import com.shenxian.security.service.dto.JwtUserDto;
 import com.shenxian.utils.RedisUtils;
+import com.shenxian.utils.Result;
+import com.shenxian.utils.RsaUtils;
 import com.wf.captcha.base.Captcha;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -48,8 +51,13 @@ public class AuthService {
      * @return /
      */
     public Object login(AuthUserDto authUser, HttpServletRequest request) {
-        // 密码解密
-        String password = authUser.getPassword();
+        // 私钥解密
+        String password;
+        try {
+            password = RsaUtils.decryptByPrivateKey(RsaProperties.privateKey, authUser.getPassword());
+        } catch (Exception e) {
+            return Result.error("密码解密异常");
+        }
         // 验证码
         String code = (String) redisUtils.get(authUser.getUuid());
         // 清除验证码
