@@ -22,7 +22,8 @@
         <maven.compiler.target>8</maven.compiler.target>
         <druid.version>1.1.24</druid.version>
         <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
-        <swagger-bootstrap-ui.version>1.9.6</swagger-bootstrap-ui.version>
+<!--        <swagger-bootstrap-ui.version>1.9.6</swagger-bootstrap-ui.version>-->
+        <knife4j.version>2.0.4</knife4j.version>
         <fastjson.version>1.2.70</fastjson.version>
         <easy-captcha.version>1.6.2</easy-captcha.version>
         <mybatis-plus.version>3.4.1</mybatis-plus.version>
@@ -86,10 +87,15 @@
             <artifactId>springfox-swagger2</artifactId>
             <version>${springfox-swagger2.version}</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>swagger-bootstrap-ui</artifactId>
             <version>${swagger-bootstrap-ui.version}</version>
+        </dependency>-->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+            <version>${knife4j.version}</version>
         </dependency>
 
         <dependency>
