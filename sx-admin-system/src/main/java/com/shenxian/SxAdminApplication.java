@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Bean;
  * @author: shenxian
  * @date: 2022/7/4 10:43
  */
-@MapperScan(basePackages = {"com.shenxian.*.mapper"})
+@MapperScan(basePackages = {"com.shenxian.**.mapper"})
 @SpringBootApplication
 public class SxAdminApplication {
 
